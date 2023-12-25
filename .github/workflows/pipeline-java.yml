@@ -18,7 +18,7 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build
-          ls -ltr
+          ls -ltrh
           
       - name: SonarCloud Analysis    
         run: |
