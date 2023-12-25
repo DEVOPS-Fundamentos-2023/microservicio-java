@@ -46,6 +46,21 @@ jobs:
         run: |
           docker push mfigueroah/microservicio-java
 
+  deploy:
+    
+    runs-on: self-hosted
+    needs: build
+    steps:
+      
+      - uses: actions/checkout@v3
+
+      - name: Deploy to Minukube
+        run: |
+          kubectl apply -f deployment.yml
+    
+
+    
+
           
  
        
