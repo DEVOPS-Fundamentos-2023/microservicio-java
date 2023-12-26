@@ -23,11 +23,7 @@ jobs:
       - name : Run Tests and Generate JaCoCo Report
         run: |
           ./gradlew test jacocoTestReport
-      
-      - name : Upload JaCoCo Report to Coveralls
-        run: |
-          ./gradlew coveralls
-          
+                    
       - name: SonarCloud Analysis    
         run: |
           chmod +x gradlew
