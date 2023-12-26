@@ -30,6 +30,7 @@ sonar {
 test {
 	useJUnitPlatform()
 	finalizedBy jacocoTestReport
+	finalizedBy jacocoTestCoverageVerification
 }
 jacoco {
     toolVersion = "0.8.9"
