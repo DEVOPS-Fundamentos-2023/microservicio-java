@@ -29,6 +29,16 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build sonar -Dsonar.token=${{secrets.TOKEN_SONARCLOUD}}
+
+      - name: Check SonarCloud Quality Gate
+        run: |
+          status=$(curl -s -u ${{ secrets.SONAR_TOKEN }} -X GET "https://sonarcloud.io/api/qualitygates/project_status?projectKey=DEVOPS-Fundamentos-2023_microservicio-java" | jq -r '.projectStatus.status')
+          if [ "$status" != "OK" ]; then
+            echo "Quality Gate failed. Stopping the workflow."
+            exit 1
+          fi
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    
                 
       - name: Docker Login   
         uses: docker/login-action@v2.2.0
