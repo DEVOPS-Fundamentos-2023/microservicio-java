@@ -19,11 +19,18 @@ jobs:
           chmod +x gradlew
           ./gradlew build
           ls -ltrh build/libs
+
+      - name : Run Tests and Generate JaCoCo Report
+        run: |
+          ./gradlew test jacocoTestReport
+      
+      - name : Upload JaCoCo Report to Coveralls
+        run: |
+          ./gradlew coveralls
           
       - name: SonarCloud Analysis    
         run: |
           chmod +x gradlew
-          ./gradlew clean test jacocoTestReport sonarqube
           ./gradlew build sonar -Dsonar.token=${{secrets.TOKEN_SONARCLOUD}}
                 
       - name: Docker Login   
