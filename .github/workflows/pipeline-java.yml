@@ -22,8 +22,8 @@ jobs:
 
       - name : Run Tests and Generate JaCoCo Report
         run: |
-          ./gradlew test jacocoTestReport
-          ./gradlew clean build jacocoTestCoverageVerification
+          #./gradlew test jacocoTestReport
+          ./gradlew clean test jacocoTestReport jacocoTestCoverageVerification
                     
       - name: SonarCloud Analysis    
         run: |
