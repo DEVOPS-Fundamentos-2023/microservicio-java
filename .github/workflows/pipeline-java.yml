@@ -23,6 +23,7 @@ jobs:
       - name: SonarCloud Analysis    
         run: |
           chmod +x gradlew
+          gradle test jacocoTestReport sonarqube
           ./gradlew build sonar -Dsonar.token=${{secrets.TOKEN_SONARCLOUD}}
       
       - name: Docker Login   
