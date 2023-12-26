@@ -24,6 +24,7 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build sonar -Dsonar.token=${{secrets.TOKEN_SONARCLOUD}}
+          ./gradlew clean test jacocoTestReport sonarqube
       
       - name: Docker Login   
         uses: docker/login-action@v2.2.0
