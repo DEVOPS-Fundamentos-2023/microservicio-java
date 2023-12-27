@@ -51,11 +51,11 @@ jobs:
         run: |
           docker push mfigueroah/microservicio-java
 
-  #deploy:
+  deploy:
     
-    #runs-on: self-hosted
-    #needs: build
-    #steps:
+    runs-on: self-hosted
+    needs: build
+    steps:
       
       - uses: actions/checkout@v3
 
