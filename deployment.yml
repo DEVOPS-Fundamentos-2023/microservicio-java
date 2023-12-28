@@ -17,5 +17,6 @@ spec:
       containers:
       - name: microservicio-java
         image: mfigueroah/microservicio-java:latest
+        command: ["/bin/sh", "-c", "echo Hello Kubernetes"]
         ports:
         - containerPort: 8080
