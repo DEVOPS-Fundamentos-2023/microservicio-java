@@ -5,6 +5,12 @@ metadata:
   labels:
     app: microservicio-java
 spec:
+  type : LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      name: http        
   replicas: 1
   selector:
     matchLabels:
@@ -14,12 +20,6 @@ spec:
       labels:
         app: microservicio-java
     spec:
-      type : LoadBalancer
-      ports:
-      - protocol: TCP
-        port: 80
-        targetPort: 80
-        name: http        
       containers:
       - name: microservicio-java
         image: mfigueroah/microservicio-java:latest
