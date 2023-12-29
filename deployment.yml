@@ -14,8 +14,11 @@ spec:
       labels:
         app: microservicio-java
     spec:
+      type: LoadBalancer
       containers:
       - name: microservicio-java
         image: mfigueroah/microservicio-java:latest
         ports:
-        - containerPort: 8080
+        #- containerPort: 8080
+        - targetPort: 8080
+          name: http
